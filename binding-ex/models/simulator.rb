@@ -49,7 +49,7 @@ class Simulator
       name: band_name
     })
 
-    @bands << band
+    #
     puts "#{band} has been created!"
     band
   end
@@ -77,7 +77,9 @@ class Simulator
 
   def transact
     player = determine_player
+    return if !player
     band = determine_band
+    return if !band
     transaction = determine_transaction
 
     case transaction
@@ -139,7 +141,7 @@ class Simulator
     end
 
     def bands_string
-      @bands.map(&:to_s).join(', ')
+      @bands.map(&:to_s).join("\n")
     end
 
     def players_string
